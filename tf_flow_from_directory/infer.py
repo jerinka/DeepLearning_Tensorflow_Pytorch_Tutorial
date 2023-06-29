@@ -2,7 +2,7 @@ import numpy as np
 import keras.utils as image
 import tensorflow as tf
 
-test_image = image.load_img('train/dog/dog.100.jpg')
+test_image = image.load_img('../DB/cat_dog/train/dog/dog.100.jpg')
 test_image = tf.image.resize(test_image, [64,64])
 test_image = image.img_to_array(test_image)
 test_image = np.expand_dims(test_image, axis = 0)

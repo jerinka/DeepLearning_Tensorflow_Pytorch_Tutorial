@@ -6,7 +6,7 @@ train_datagen = ImageDataGenerator(rescale = 1./255,
                                    zoom_range = 0.2,
                                    horizontal_flip = True)
 
-training_set = train_datagen.flow_from_directory('train',
+training_set = train_datagen.flow_from_directory('../DB/cat_dog/train',
                                                  target_size = (64, 64),
                                                  batch_size = 32,
                                                  class_mode = 'binary')
@@ -14,12 +14,12 @@ training_set = train_datagen.flow_from_directory('train',
 print('class info:',training_set.class_indices)
 
 val_datagen = ImageDataGenerator(rescale = 1./255)
-val_set = val_datagen.flow_from_directory('val',
+val_set = val_datagen.flow_from_directory('../DB/cat_dog/val',
                                             target_size = (64, 64),
                                             batch_size = 32,
                                             class_mode = 'binary')
 
-if 0:
+if 1:
     cnn = tf.keras.models.Sequential()
     cnn.add(tf.keras.layers.Conv2D(filters=32, kernel_size=3, activation='relu', input_shape=[64, 64, 3]))
     cnn.add(tf.keras.layers.MaxPool2D(pool_size=2, strides=2))
